@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using BolsaEmpleo.Models;
+using BolsaEmpleo.Repository;
+using BolsaEmpleo.IRepository;
 
 namespace BolsaEmpleo
 {
@@ -26,6 +30,13 @@ namespace BolsaEmpleo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<BolsaEmpleoContext>(option =>
+            {
+                option.UseSqlServer(Configuration.GetConnectionString("BolsaEmpleo"));
+            });
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
