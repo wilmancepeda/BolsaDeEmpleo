@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BolsaEmpleo.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class CategoryController : Controller
     {
@@ -17,9 +17,18 @@ namespace BolsaEmpleo.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<IActionResult> Index()
+
+        [Route("GetCategories")]
+        public async Task<IActionResult> GetCategories()
         {
-            return Ok(await _categoryRepository.GetCategories());
+            var response = await _categoryRepository.GetCategories();
+
+            if (response.Ok)
+            {
+                return Ok(response.Data);
+            }
+
+            return BadRequest(response.Mensaje);
         }
     }
 }

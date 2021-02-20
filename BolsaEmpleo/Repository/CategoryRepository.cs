@@ -25,14 +25,14 @@ namespace BolsaEmpleo.Repository
             {
                 response.Data = await _db.JobCategory.ToListAsync();
                 response.Ok = true;
-
+                
                 return response;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 response.Ok = false;
-                response.Mensaje = "Ops! Algo inesperado ha ocurrido. Favor inténtelo más tarde";
-
+                //response.Mensaje = "Ops! Algo inesperado ha ocurrido. Favor inténtelo más tarde";
+                response.Mensaje = e.Message;
                 return response;
             }
         }
