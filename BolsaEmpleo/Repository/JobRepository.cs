@@ -21,7 +21,7 @@ namespace BolsaEmpleo.Repository
             _categoryRepository = categoryRepository;
             _db = db;
         }
-        public async Task<Response<List<JobByCategoryResponse>>> GetJobsForJobIndex()
+        public async Task<Response<List<JobByCategoryResponse>>> GetLastJobsForIndex()
         {
             var response = new Response<List<JobByCategoryResponse>>();
             var jobsResponse = new List<JobByCategoryResponse>();
@@ -36,7 +36,7 @@ namespace BolsaEmpleo.Repository
                     {
                         foreach (var category in categories.Data)
                         {
-                            var jobs = await GetJobsByCategory(category.IdCategory);
+                            var jobs = await GetLastJobsByCategory(category.IdCategory);
 
                             if (jobs.Ok)
                             {
@@ -86,10 +86,10 @@ namespace BolsaEmpleo.Repository
 
                 return response;
             }
-          
+
         }
 
-        public async Task<Response<List<JobByCategoryResponse>>> GetJobsByCategory(int categoryId)
+        public async Task<Response<List<JobByCategoryResponse>>> GetLastJobsByCategory(int categoryId)
         {
             var response = new Response<List<JobByCategoryResponse>>();
 
@@ -100,21 +100,21 @@ namespace BolsaEmpleo.Repository
                ).ToListAsync();
 
                 response.Data = jobs;
-                
+
                 response.Ok = true;
-                
+
                 return response;
             }
             catch (Exception e)
             {
                 response.Mensaje = e.Message;
                 response.Ok = false;
-                
+
                 return response;
             }
         }
 
-        public async Task<Response<List<JobByCategoryResponse>>> GetJobsForJobIndex(string query)
+        public async Task<Response<List<JobByCategoryResponse>>> GetLastJobsForIndex(string query)
         {
             var response = new Response<List<JobByCategoryResponse>>();
             var jobsResponse = new List<JobByCategoryResponse>();
@@ -198,6 +198,141 @@ namespace BolsaEmpleo.Repository
                 response.Ok = true;
 
                 return response;
+            }
+            catch (Exception e)
+            {
+                response.Mensaje = e.Message;
+                response.Ok = false;
+
+                return response;
+            }
+        }
+
+        public async Task<Response<List<JobByCategoryResponse>>> GetJobsByCategory(int categoryId)
+        {
+            var response = new Response<List<JobByCategoryResponse>>();
+
+            try
+            {
+                var jobs = await _db.JobByCategory.FromSqlRaw<JobByCategoryResponse>("getJobsByCategory @categoryId",
+               new SqlParameter("@categoryId", categoryId)
+               ).ToListAsync();
+
+                response.Data = jobs;
+
+                response.Ok = true;
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.Mensaje = e.Message;
+                response.Ok = false;
+
+                return response;
+            }
+        }
+
+        public async Task<Response<JobResponse>> GetJobById(int id)
+        {
+            var response = new Response<JobResponse>();
+
+            try
+            {
+                var job = await _db.JobResponse.FromSqlRaw<JobResponse>("getJobById @id",
+                new SqlParameter("@id", id)).ToListAsync();
+
+                response.Data = job.FirstOrDefault();
+
+                if (response.Data == null)
+                {
+                    response.Mensaje = "No se encontró el puesto de trabajo. Por favor, verifique inténte nuevamente";
+                }
+                response.Ok = true;
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.Mensaje = e.Message;
+                response.Ok = false;
+
+                return response;
+            }
+        }
+
+        public async Task<Response<bool>> CreateJob(CreateJobRequest job)
+        {
+            var response = new Response<bool>();
+
+            try
+            {
+                using (var transaction = await _db.Database.BeginTransactionAsync(System.Data.IsolationLevel.ReadCommitted))
+                {
+                    string user = "WilmanC";
+
+                    int result = await _db.Database.ExecuteSqlRawAsync("createJob @categoryId, @employerId, @positionId, @jobType, @ubication, @description, @howApply, @createdBy",
+                                    new SqlParameter("@categoryId", job.CategoryId),
+                                    new SqlParameter("@employerId", job.EmployerId),
+                                    new SqlParameter("@positionId", job.PositionId),
+                                    new SqlParameter("@jobType", job.JobType),
+                                    new SqlParameter("@ubication", job.Ubication),
+                                    new SqlParameter("@description", job.Description),
+                                    new SqlParameter("@howApply", job.HowApply),
+                                    new SqlParameter("@createdBy", user)
+
+                                    );
+
+                    if (result > 0)
+                    {
+                        try
+                        {
+                            await transaction.CommitAsync();
+                        }
+                        catch (Exception e)
+                        {
+                            await transaction.RollbackAsync();
+                            await transaction.DisposeAsync();
+                            response.Data = false;
+                            response.Ok = false;
+                            response.Mensaje = e.Message;
+
+                            return response;
+
+                        }
+
+                        response.Data = true;
+                        response.Ok = true;
+                        response.Mensaje = "Creado correctamente";
+
+                        return response;
+                    }
+
+                    try
+                    {
+                        await transaction.RollbackAsync();
+                    }
+                    catch (Exception e)
+                    {
+                        await transaction.RollbackAsync();
+                        await transaction.DisposeAsync();
+                        response.Data = false;
+                        response.Ok = false;
+                        response.Mensaje = e.Message;
+
+                        return response;
+
+                    }
+                   
+
+                }
+
+                response.Data = false;
+                response.Ok = false;
+                response.Mensaje = "No se pudo Actualizar. Por favor, verifique e inténte nuevamente";
+                return response;
+
+
             }
             catch (Exception e)
             {

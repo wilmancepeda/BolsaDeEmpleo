@@ -1,4 +1,5 @@
-﻿using BolsaEmpleo.DTO.Comun;
+﻿using BolsaEmpleo.DTO.Category;
+using BolsaEmpleo.DTO.Comun;
 using BolsaEmpleo.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace BolsaEmpleo.IRepository
 {
     public interface ICategoryRepository
     {
-        public Task<Response<List<JobCategory>>> GetCategories();
+        public Task<Response<List<GetCategoriesResponse>>> GetCategories();
         
     }
 }

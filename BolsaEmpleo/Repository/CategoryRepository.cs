@@ -1,4 +1,5 @@
-﻿using BolsaEmpleo.DTO.Comun;
+﻿using BolsaEmpleo.DTO.Category;
+using BolsaEmpleo.DTO.Comun;
 using BolsaEmpleo.IRepository;
 using BolsaEmpleo.Models;
 using Microsoft.EntityFrameworkCore;
@@ -17,13 +18,14 @@ namespace BolsaEmpleo.Repository
         {
             _db = db;
         }
-        public async Task<Response<List<JobCategory>>> GetCategories()
+        public async Task<Response<List<GetCategoriesResponse>>> GetCategories()
         {
-            var response = new Response<List<JobCategory>>();
+            var response = new Response<List<GetCategoriesResponse>>();
 
             try
             {
-                response.Data = await _db.JobCategory.ToListAsync();
+                response.Data = await _db.JobCategory.Select(c =>  new GetCategoriesResponse() { IdCategory = c.IdCategory, CategoryName = c.CategoryName }).ToListAsync();
+
                 response.Ok = true;
                 
                 return response;

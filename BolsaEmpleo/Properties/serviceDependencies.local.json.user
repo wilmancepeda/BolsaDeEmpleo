@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2021-02-28T02:42:02.2092998Z"
+    },
+    "appInsights1": {
+      "restored": true,
+      "restoreTime": "2021-02-28T02:42:10.549583Z"
+    }
+  },
+  "parameters": {
+    "appInsights1.subscriptionId": {
+      "Name": "appInsights1.subscriptionId",
+      "Type": "subscription",
+      "Value": "c603467b-5dd5-423b-bdd8-2e741eb20e5c"
+    },
+    "appInsights1.resourceGroupName": {
+      "Name": "appInsights1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "BolsaEmpleoItlaResourceGroup"
+    }
+  }
+}

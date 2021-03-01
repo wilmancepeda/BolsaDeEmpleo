@@ -7,6 +7,7 @@ namespace BolsaEmpleo.DTO.Job
 {
     public class JobByCategoryResponse
     {
+        public int IdJob { get; set; }
         public string CategoryName { get; set; }
         public string Ubication { get; set; }
         public string PositionName { get; set; }

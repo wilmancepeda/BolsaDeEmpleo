@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAltiO30MaKU+xdpSad+pwEgAAAAACAAAAAAAQZgAAAAEAACAAAABUWCVEAUORyzrdMIdHuh470cJuC3VAyAHh0f0gjnzwiwAAAAAOgAAAAAIAACAAAACvyu//GSSMguTcCJG+6Hxj3zzj4JACVlnHdR7IJ7BGXYAAAADcWx75FefRZZ10IFYyhNtdnHfec3GDJDssF1MPlCtjSmpCpu57ETRfauTGs70oekmzTIFcgHNzEbPooS48iu1b8NAvlHLaOeNXM5BDK6PgZgiZTA+iQqKz1m88CppRL0B2WcNFRYiqafM1PnRjij//bRiqCmu/JwwTKqu7EDwMdkAAAAC1Ryryx8VsAxEHh4EEDfDkTTkvLsr3hdo8Zefhudf42/9oPlP4fYOHrJ1Nj3HI4ARDAqCHHM/AWyJbg9R+8x3q</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="BolsaEmpleo">
+      <Value>Data Source=tcp:bolsaempleodbserver.database.windows.net,1433%3bInitial Catalog=BolsaEmpleo_db%3bUser Id=wilmanc%40bolsaempleodbserver%3bPassword=Myfirst%4002</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

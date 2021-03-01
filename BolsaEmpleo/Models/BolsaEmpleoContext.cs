@@ -1,7 +1,14 @@
 ﻿using System;
+using BolsaEmpleo.DTO;
+using BolsaEmpleo.DTO.Category;
 using BolsaEmpleo.DTO.Job;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata;
+//using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+//using Microsoft.AspNetCore.Identity;
+using BolsaEmpleo.DTO.Seguridad;
+using BolsaEmpleo.DTO.User;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -48,10 +55,34 @@ namespace BolsaEmpleo.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<>(entity =>
+            //{
+            //    entity.HasNoKey();
+            //});
+
+            modelBuilder.Entity<UserReponse>(entity =>
+            {
+                entity.HasNoKey();
+            });
+
             modelBuilder.Entity<JobByCategoryResponse>(entity =>
             {
                 entity.HasNoKey();
             });
+
+            modelBuilder.Entity<JobResponse>(entity =>
+            {
+                entity.HasNoKey();
+            });
+
+            modelBuilder.Entity<GetPositionsByCategoryResponse>(entity => {
+                entity.HasNoKey();
+            });
+
+            //modelBuilder.Entity<GetCategoriesResponse>(entity =>
+            //{
+            //    entity.HasNoKey();
+            //});
 
             modelBuilder.Entity<AspNetRoleClaims>(entity =>
             {
