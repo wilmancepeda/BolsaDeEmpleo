@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolsaEmpleo", "BolsaEmpleo.csproj", "{267C7D17-485F-4F0A-93C7-5BFD013071F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BolsaEmpleo", "BolsaEmpleo.csproj", "{267C7D17-485F-4F0A-93C7-5BFD013071F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolsaEmpleoTests", "..\BolsaEmpleoTests\BolsaEmpleoTests.csproj", "{D918B24F-67C0-4F11-8CC2-F6F206C1A141}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{267C7D17-485F-4F0A-93C7-5BFD013071F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{267C7D17-485F-4F0A-93C7-5BFD013071F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{267C7D17-485F-4F0A-93C7-5BFD013071F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D918B24F-67C0-4F11-8CC2-F6F206C1A141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D918B24F-67C0-4F11-8CC2-F6F206C1A141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D918B24F-67C0-4F11-8CC2-F6F206C1A141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D918B24F-67C0-4F11-8CC2-F6F206C1A141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
