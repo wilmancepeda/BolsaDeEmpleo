@@ -342,5 +342,37 @@ namespace BolsaEmpleo.Repository
                 return response;
             }
         }
+
+        public async Task<Response<bool>> Delete(int id)
+        {
+            var response = new Response<bool>();
+
+            try
+            {
+                var result = await _db.Database.ExecuteSqlRawAsync("inactiveJob @id",
+                new SqlParameter("@id", id));
+
+                if (result > 0)
+                {
+                    response.Data = true;
+                    response.Mensaje = "Eliminado con exito";
+                    response.Ok = true;
+                    return response;
+                }
+
+                response.Data = false;
+                response.Mensaje = "No se pudo eliminar. Por favor, inténte nuevamente";
+                response.Ok = true;
+
+                return response;
+            }
+            catch (Exception e)
+            {
+                response.Mensaje = e.Message;
+                response.Ok = false;
+                response.Data = false;
+                return response;
+            }
+        }
     }
 }

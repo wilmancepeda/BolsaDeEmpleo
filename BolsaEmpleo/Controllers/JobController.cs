@@ -93,5 +93,20 @@ namespace BolsaEmpleo.Controllers
 
             return BadRequest(reponse.Mensaje);
         }
+
+        [Route("delete/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var reponse = await _jobRepository.Delete(id);
+
+            if (reponse.Data)
+            {
+                 return Ok(reponse.Mensaje);
+            }
+
+            
+            return BadRequest(reponse.Mensaje);
+        }
     }
 }

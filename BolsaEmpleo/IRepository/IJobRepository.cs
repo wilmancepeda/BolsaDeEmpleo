@@ -17,6 +17,7 @@ namespace BolsaEmpleo.IRepository
         public Task<Response<List<JobByCategoryResponse>>> GetLastJobsForIndex();
         public Task<Response<List<JobByCategoryResponse>>> GetLastJobsForIndex(string query);
         public Task<Response<bool>> CreateJob(CreateJobRequest job);
+        public Task<Response<bool>> Delete(int id);
 
     }
 }
