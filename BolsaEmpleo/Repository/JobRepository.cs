@@ -215,7 +215,7 @@ namespace BolsaEmpleo.Repository
             try
             {
                 var jobs = await _db.JobByCategory.FromSqlRaw<JobByCategoryResponse>("getJobsByCategory @categoryId",
-               new SqlParameter("@categoryId", categoryId)
+               new SqlParameter("@categoryId", 5)
                ).ToListAsync();
 
                 response.Data = jobs;
