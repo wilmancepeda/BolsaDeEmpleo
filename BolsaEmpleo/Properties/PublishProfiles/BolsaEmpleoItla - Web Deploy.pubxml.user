@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAltiO30MaKU+xdpSad+pwEgAAAAACAAAAAAAQZgAAAAEAACAAAABUWCVEAUORyzrdMIdHuh470cJuC3VAyAHh0f0gjnzwiwAAAAAOgAAAAAIAACAAAACvyu//GSSMguTcCJG+6Hxj3zzj4JACVlnHdR7IJ7BGXYAAAADcWx75FefRZZ10IFYyhNtdnHfec3GDJDssF1MPlCtjSmpCpu57ETRfauTGs70oekmzTIFcgHNzEbPooS48iu1b8NAvlHLaOeNXM5BDK6PgZgiZTA+iQqKz1m88CppRL0B2WcNFRYiqafM1PnRjij//bRiqCmu/JwwTKqu7EDwMdkAAAAC1Ryryx8VsAxEHh4EEDfDkTTkvLsr3hdo8Zefhudf42/9oPlP4fYOHrJ1Nj3HI4ARDAqCHHM/AWyJbg9R+8x3q</EncryptedPassword>
-    <History>True|2021-03-05T14:25:04.6605630Z;True|2021-03-05T10:18:20.1764993-04:00;</History>
+    <History>True|2021-03-05T19:52:52.8538130Z;True|2021-03-05T15:37:53.7366880-04:00;True|2021-03-05T15:30:26.8821144-04:00;True|2021-03-05T14:42:42.8707256-04:00;True|2021-03-05T14:22:59.9702579-04:00;True|2021-03-05T10:25:04.6605630-04:00;True|2021-03-05T10:18:20.1764993-04:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="BolsaEmpleo">
