@@ -32,5 +32,5 @@ jobs:
       with:
         app-name: 'BolsaEmpleoItla'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8bbe8f33a24b4eb2b4c4d3ee2a0cfdb3 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2124cdbdde1d492fb60f4a7eb41a1273 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
