@@ -25,7 +25,7 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/BolsaEmpleo/BolsaEmpleo.csproj
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/BolsaEmpleoItla
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -33,4 +33,4 @@ jobs:
         app-name: 'BolsaEmpleoItla'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_8bbe8f33a24b4eb2b4c4d3ee2a0cfdb3 }}
-        package: ${{env.DOTNET_ROOT}}/BolsaEmpleo/BolsaEmpleo.csproj
+        package: ${{env.DOTNET_ROOT}}/BolsaEmpleoItla
